@@ -12,6 +12,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.yan.bean.Group;
+import com.yan.bean.Product;
 import com.yan.bean.User;
 import com.yan.bean.Weibo;
 
@@ -186,5 +187,18 @@ public class AppTest {
 		Weibo weibo = new Weibo("123456", "上海");
 		String string = JSON.toJSONString(weibo);
 		System.out.println(string);
+	}
+
+	@Test
+	public void bean2Json() {
+		Product p = new Product();
+		p.setId(1);
+		p.setPrice(100.00D);
+
+		System.out.println(p);
+
+		// bean中带有小数转json时，会把小数后面的0舍掉
+		String str = JSON.toJSONString(p);
+		System.out.println(str);
 	}
 }
